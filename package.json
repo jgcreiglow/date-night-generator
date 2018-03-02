@@ -1,0 +1,33 @@
+{
+  "name": "date-night-generator",
+  "version": "1.0.0",
+  "description": "A tool to generate date night ideas based on Yelp and other APIs",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "npm": "^5.7.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jongtelles/date-night-generator.git"
+  },
+  "keywords": [
+    "date",
+    "night",
+    "generator",
+    "API"
+  ],
+  "author": "Jon Telles, Jessica Creiglow, Max Cliff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jongtelles/date-night-generator/issues"
+  },
+  "homepage": "https://github.com/Jongtelles/date-night-generator#readme"
+}
