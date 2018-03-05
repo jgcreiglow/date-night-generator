@@ -20,6 +20,20 @@ const yelp = require('yelp-fusion');
 const apiKey = 'pXXnRa6C4iBeCevtqx0sY-fy-foonaKcKeRRLC9mjb2iDcyBAS8atAR2FDRzgYgewOFlqMoutS50Vwhgax964JKjJN7VwLYY9_GSsoEjiqxIwFskAP5hSQTJ2H-cWnYx';
 const client = yelp.client(apiKey);
 
+// Interacting with response object
+// Restaurant name
+// response.jsonBody.businesses[0].name
+// Restaurant price
+// response.jsonBody.businesses[0].price
+// Category (Food type)
+// response.jsonBody.businesses[0].categories[0].title
+// Restaurant address
+// response.jsonBody.businesses[0].location.address1
+// response.jsonBody.businesses[0].location.city
+// response.jsonBody.businesses[0].location.zip_code
+// Restaurant Yelp link
+// response.jsonBody.businesses[0].url
+
 // we'll use javascript in our HTML file or a separate js file to modify these values like this:
 // searchRequest.open_at = $("#date-time").val();
 // searchRequest.location = $("#date-location").val();
@@ -36,28 +50,7 @@ let searchRequest = {
     attributes: ''
 };
 
-app.get('/price/:dollarSigns', (req, res) => {
-        searchRequest.price = req.params.dollarSigns
-    }
-
-)
-
-// Interacting with response object
-// Restaurant name
-// response.jsonBody.businesses[0].name
-// Restaurant price
-// response.jsonBody.businesses[0].price
-// Category (Food type)
-// response.jsonBody.businesses[0].categories[0].title
-// Restaurant address
-// response.jsonBody.businesses[0].location.address1
-// response.jsonBody.businesses[0].location.city
-// response.jsonBody.businesses[0].location.zip_code
-// Restaurant Yelp link
-// response.jsonBody.businesses[0].url
-
-// searching the API
-client.search(searchRequest).then(response => {
+let yelpSearch = client.search(searchRequest).then(response => {
 
     let firstResult = response.jsonBody.businesses[0];
     let secondResult = response.jsonBody.businesses[1];
@@ -67,41 +60,48 @@ client.search(searchRequest).then(response => {
 
     // testing to make sure we get results, these will be replaced with serving the client these results on the results page
     //
-    console.log(JSON.stringify(firstResult, null, 4));
-    console.log(JSON.stringify(secondResult, null, 4));
-    console.log(JSON.stringify(thirdResult, null, 4));
-    console.log(JSON.stringify(fourthResult, null, 4));
-    console.log(JSON.stringify(testResult, null, 4));
+    // console.log(JSON.stringify(firstResult, null, 4));
+    // console.log(JSON.stringify(secondResult, null, 4));
+    // console.log(JSON.stringify(thirdResult, null, 4));
+    // console.log(JSON.stringify(fourthResult, null, 4));
+    // console.log(JSON.stringify(testResult, null, 4));
 
 }).catch(e => {
     console.log(e);
 });
 
+app.get('/restuarant/:dollarSigns', (req, res) => {
+    searchRequest.price = req.params.dollarSigns;
+    client.search(searchRequest).then(res => {
+        res.json(firstResult);
+    })
+})
+
 // routes
 
 // home, time entry phase
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "./index.html"))
+    res.sendFile(path.join(__dirname, "./assets/index.html"))
 });
 
 // price range phase
 app.get("/price", (req, res) => {
-    res.sendFile(path.join(__dirname, "./price.html"))
+    res.sendFile(path.join(__dirname, "./assets/price.html"))
 });
 
 // movie selection phase
 app.get("/movie", (req, res) => {
-    res.sendFile(path.join(__dirname, "./movie.html"))
+    res.sendFile(path.join(__dirname, "./assets/movie.html"))
 });
 
 // results
 app.get("/results", (req, res) => {
-    res.sendFile(path.join(__dirname, "./results.html"))
+    res.sendFile(path.join(__dirname, "./assets/results.html"))
 });
 
 // default to home page if other route given
 app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "./index.html"));
+    res.sendFile(path.join(__dirname, "./assets/index.html"));
 });
 
 // start server to listen
