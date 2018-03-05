@@ -18,8 +18,8 @@ let priceBuilder = () => {
 let selectedPrice;
 
 let priceGetter = (selectedPrice) => {
-    $.get(`/restaurant/${selectedPrice}`, () => {
-        console.log(selectedPrice);
+    $.get(`/restaurant/${selectedPrice}`, (data) => {
+        console.log(data);
     });
 }
 
@@ -27,7 +27,7 @@ $('#btnPrice').on("click", (event) => {
     event.preventDefault();
     if (!priceState) {
         priceBuilder();
-        selectedPrice = priceArr.split(',')
+        selectedPrice = priceArr.slice(',')
         priceGetter(selectedPrice);
         priceState = true;
     }

@@ -50,13 +50,16 @@ let searchRequest = {
     attributes: ''
 };
 
-let yelpSearch = client.search(searchRequest).then(response => {
+let yelpSearch = (callback) => client.search(searchRequest).then(response => {
 
     let firstResult = response.jsonBody.businesses[0];
     let secondResult = response.jsonBody.businesses[1];
     let thirdResult = response.jsonBody.businesses[2];
     let fourthResult = response.jsonBody.businesses[3];
     let testResult = response.jsonBody.businesses[0].location.address1;
+
+    console.log(firstResult);
+    callback(firstResult);
 
     // testing to make sure we get results, these will be replaced with serving the client these results on the results page
     //
@@ -70,11 +73,12 @@ let yelpSearch = client.search(searchRequest).then(response => {
     console.log(e);
 });
 
-app.get('/restuarant/:dollarSigns', (req, res) => {
+app.get('/restaurant/:dollarSigns?', (req, res) => {
     searchRequest.price = req.params.dollarSigns;
-    client.search(searchRequest).then(res => {
+    yelpSearch((firstResult) => {
+        console.log(firstResult);
         res.json(firstResult);
-    })
+    });
 })
 
 // routes
@@ -100,9 +104,9 @@ app.get("/results", (req, res) => {
 });
 
 // default to home page if other route given
-app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "./assets/index.html"));
-});
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./assets/index.html"));
+// });
 
 // start server to listen
 app.listen(PORT, () => {
