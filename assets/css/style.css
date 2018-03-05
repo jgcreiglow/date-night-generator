@@ -1,0 +1,28 @@
+.navbar, .nav{
+    background-color:rgb(16,31,83);
+    color:rgb(95,168,85);
+    padding: 1px; 
+}
+
+.breadcrumb{
+    background-color:rgb(16,31,83);
+    color:rgb(95,168,85);
+}
+body {
+    background-color: rgba(95,168,85, 1.0);
+}
+
+.breadcrumb a{
+    text-decoration: none;
+    color: lightgrey;
+}
+
+.btn-lg{
+    background-color:rgb(16,31,83);
+    color:rgb(95,168,85);
+}
+
+.btn-lg a{
+    text-decoration: none;
+    color:rgb(95,168,85);
+}

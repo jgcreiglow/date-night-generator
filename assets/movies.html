@@ -9,20 +9,45 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/Users/jessica/apps/date-night-generator/assets/css/style.css">
+
+      <!-- font awesome -->
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 
 <body>
  <!-- Navbar for top -->
-    <nav class="navbar sticky-top navbar-light bg-light navbar-justify-end">
-      <h1> Let us help you plan a great date night</h1>
+    <nav class="navbar sticky-top justify-content-md-center">  
+        <img src = "/Users/jessica/apps/date-night-generator/assets/images/logo.png" alt="logo"> 
     </nav>
-    <div class = "container-fluid">
-            <div class="col-md-offset-1 col-md-auto">
-                    <div class="row justify-content-md-center">
-                        <h3>Time to pick a movie! </h3>
-                    </div>
+    <nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">                    
+        <ol class="breadcrumb">         
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="./index.html"> 
+                    <i class="fa fa-calendar-alt"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">             
+                <a href="./price.html">         
+                    <i class="fa fa-utensils"></i> 
+                </a>
+            </li>
+            <li class="breadcrumb-item" aria-current="page">             
+                    <i class="fa fa-film"></i> 
+            </li>           
+        </ol>
+    </nav>
 
-             </div>
+
+    <div class = "container-fluid">
+                <!-- title question box  -->
+        <div class="col-md-offset-1 col-md-auto">
+            <div class="row justify-content-md-center">
+                <h3>Time to pick a movie! </h3>
+            </div>
+        </div>
 
     <!-- content box -->
 
@@ -37,19 +62,36 @@
             </div>
             <div class = "col-md-2"></div>
             <div class="col-md-auto">
-                    <div class="row justify-content-md-center">
-                        <h3>By location </h3>
-                    </div>
-                    <div class="row justify-content-md-center">
-                        <input id="zipcode" type="number" placeholder="zip code"> </input>
-                    </div>
+                <div class="row justify-content-md-center">
+                    <h3>By location </h3>
                 </div>
+                <div class="row justify-content-md-center">
+                    <input id="zipcode" type="number" placeholder="zip code"> </input>
+                </div>
+            </div>
         </div>
+
+         <!-- button to go to next page -->
         <div class="row justify-content-md-center">
-            <button id="btnMovies" class="btn-lg"> <a href="./results.html"> Results</a> </button>
+            <a href="./results.html"> 
+                <button id="btnIndex" class="btn-lg"> 
+                    <i class="fa fa-arrow-alt-circle-right justify-content-center"> 
+                    </i> 
+                    <br>
+                    Next
+                </button>
+            </a> 
         </div>
     </div>
-
+    <footer class = "navbar fixed-bottom justify-content-md-center">
+        <p>
+            powered by: 
+            <i class="fab fa-yelp" ></i>
+            <i class="fab fa-node" ></i>
+            <i class="fab fa-js"></i>
+            <i class="fa fa-coffee"></i>
+        </p>
+    </footer>
 </body>
 
 </html>
