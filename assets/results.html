@@ -9,20 +9,51 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="/Users/jessica/apps/date-night-generator/assets/css/style.css">
+
+    <!-- font awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 
 <body>
  <!-- Navbar for top -->
-    <nav class="navbar sticky-top navbar-light bg-light navbar-justify-end">
-      <h1> Let us help you plan a great date night</h1>
+     <nav class="navbar sticky-top justify-content-md-center">  
+        <img src = "/Users/jessica/apps/date-night-generator/assets/images/logo.png" alt="logo"> 
     </nav>
+    <nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">                              
+        <ol class="breadcrumb">         
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="./index.html"> 
+                    <i class="fa fa-calendar-alt"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">    
+                <a href="./price.html"> 
+                    <i class="fa fa-utensils"></i>             
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">           
+                <a href="./movies.html"> 
+                    <i class="fa fa-film"></i> 
+                </a>  
+            </li>  
+            <li class="breadcrumb-item" aria-current="page">             
+                    <i class="fa fa-heart"></i> 
+            </li>           
+        </ol>
+    </nav>
+
+
     <div class = "container-fluid">
-        <div class = "row justify-content-md-center">
+
+        <!-- title question box  -->
+        <div class = "title row justify-content-md-center">
             <h2> Results</h2>
         </div>
 
-    <!-- content box -->
-
+        <!-- content box -->
         <div class="row justify-content-md-center">
             <div class="col-md-offset-1 col-md-auto">
                 <div class="row justify-content-md-center">
@@ -37,10 +68,30 @@
              
             </div>
         </div>
+        
+        <!-- button to go to next page -->
         <div class="row justify-content-md-center">
-            <button id="btnResults" class="btn-lg"><a href="./index.html">Restart</a></button>
+            <a href="./index.html">     
+                <button id="btnIndex" class="btn-lg"> 
+                    <i class="fa fa-redo justify-content-center"> 
+                    </i> 
+                    <br>
+                    Reset
+                </button>
+            </a> 
         </div>
     </div>
+
+
+    <footer class = "navbar fixed-bottom justify-content-md-center">
+        <p>
+            powered by: 
+            <i class="fab fa-yelp" ></i>
+            <i class="fab fa-node" ></i>
+            <i class="fab fa-js"></i>
+            <i class="fa fa-coffee"></i>
+        </p>
+    </footer>
 
 </body>
 
