@@ -11,6 +11,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+
+app.use(express.static('assets'));
+
 // APIs
 // Yelp
 const yelp = require('yelp-fusion');
@@ -33,6 +36,12 @@ let searchRequest = {
     attributes: ''
 };
 
+app.get('/price/:dollarSigns', (req, res) => {
+        searchRequest.price = req.params.dollarSigns
+    }
+
+)
+
 // Interacting with response object
 // Restaurant name
 // response.jsonBody.businesses[0].name
@@ -49,6 +58,7 @@ let searchRequest = {
 
 // searching the API
 client.search(searchRequest).then(response => {
+
     let firstResult = response.jsonBody.businesses[0];
     let secondResult = response.jsonBody.businesses[1];
     let thirdResult = response.jsonBody.businesses[2];
@@ -90,9 +100,9 @@ app.get("/results", (req, res) => {
 });
 
 // default to home page if other route given
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "./index.html"));
-  });
+});
 
 // start server to listen
 app.listen(PORT, () => {
