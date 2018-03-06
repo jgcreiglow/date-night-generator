@@ -73,8 +73,9 @@ let yelpSearch = (callback) => client.search(searchRequest).then(response => {
     console.log(e);
 });
 
-app.get('/restaurant/:dollarSigns?', (req, res) => {
-    searchRequest.price = req.params.dollarSigns;
+app.get('/restaurant/:userSelection?', (req, res) => {
+    searchRequest.price = req.params.userSelection;
+    // searchRequest.location = req.params.userSelection;
     yelpSearch((firstResult) => {
         console.log(firstResult);
         res.json(firstResult);
