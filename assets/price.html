@@ -11,17 +11,18 @@
         crossorigin="anonymous">
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="/Users/jessica/apps/date-night-generator/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
-      <!-- font awesome -->
-  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    
+    <!-- font awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 
 <body>
  <!-- Navbar for top -->
-    <nav class="navbar sticky-top justify-content-md-center">  
-        <img src = "/Users/jessica/apps/date-night-generator/assets/images/logo.png" alt="logo"> 
-    </nav>
     <nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">                    
         <ol class="breadcrumb">         
             <li class="breadcrumb-item active" aria-current="page">
@@ -35,30 +36,36 @@
         </ol>
     </nav>
 
+    <div class="jumbotron justify-content-md-center">  
+            <img class ="img-fluid" src = "./images/logo.png" alt="logo"> 
+    </div>
+    
     <div class = "container-fluid">
 
         <!-- title question box  -->
-        <div class = "row justify-content-md-center">
-            <h2> 
-                Start with a restaurant!
-            </h2>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto title rounded">
+                <h2>Start With A Restaurant!</h2>
+            </div>
         </div>
 
         <!-- content box -->
         <div class="row justify-content-md-center">
-            <div class col-md-offset-1 col-md-auto>
+            <div class= "content rounded col-md-auto" >
                 <div class="row justify-content-md-center">
                     <h3>Where do you want to go? </h3>
                 </div>
+                <hr>
                 <div class="row justify-content-md-center">
                     <input id="zipcode" type="number" placeholder="zip code"> </input>
                 </div>
             </div>
             <div class="col-md-1"></div>
-            <div class col-md-auto>
+            <div class= "content rounded col-md-auto">
                 <div class="row justify-content-md-center">
                     <h3>What's your price Range? </h3>
                 </div>
+                <hr>
                 <div class="row justify-content-md-center">
                     <div class="col-md-auto">
                         <input type="checkbox" id="1" name="$" value="1"> 
@@ -91,12 +98,12 @@
                 </div>
             </div>
         </div>           
-    </div>
+  
 
         <!-- button to go to next page -->
         <div class="row justify-content-md-center">
-            <a href="./movies.html"> 
-                <button id="btnIndex" class="btn-lg"> 
+            <a href= "./movies.html"> 
+                <button id="btnPrice" class="btn-lg hvr-grow-shadow"> 
                     <i class="fa fa-arrow-alt-circle-right justify-content-center"> 
                     </i> 
                     <br>
@@ -105,6 +112,7 @@
             </a> 
         </div>
     </div>
+
     <footer class = "navbar fixed-bottom justify-content-md-center">
         <p>
             powered by: 
@@ -114,6 +122,13 @@
             <i class="fa fa-coffee"></i>
         </p>
     </footer>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="./app.js"></script>
+
 </body>
 
 </html>

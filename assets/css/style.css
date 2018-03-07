@@ -1,15 +1,15 @@
-.navbar, .nav{
+/* nav & footer formatting */
+
+.navbar, .nav, .jumbotron{
     background-color:rgb(16,31,83);
     color:rgb(95,168,85);
     padding: 1px; 
 }
 
+/* breadcrumb formatting */
 .breadcrumb{
     background-color:rgb(16,31,83);
     color:rgb(95,168,85);
-}
-body {
-    background-color: rgba(95,168,85, 1.0);
 }
 
 .breadcrumb a{
@@ -17,6 +17,44 @@ body {
     color: lightgrey;
 }
 
+/* document formatting */
+body {
+    background-image: url("./date-night-generator/assets/images/background.jpg");    
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    padding-bottom: 70px;
+}
+
+/* title formatting */
+
+.title 
+{
+    background-color:rgb(16,31,83);
+    color:rgb(95,168,85);
+    margin: 30px;
+    width: auto;
+    padding: 20px;
+    align-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* content formatting */
+.content{
+    background-color:rgb(16,31,83);
+    color:rgb(95,168,85);
+    margin: 30px;
+    width: auto;
+    padding: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    border-radius: 5;
+}
+
+hr{
+    background-color:gray;
+}
+
+/* Button formatting */
 .btn-lg{
     background-color:rgb(16,31,83);
     color:rgb(95,168,85);
@@ -26,3 +64,47 @@ body {
     text-decoration: none;
     color:rgb(95,168,85);
 }
+
+/* CSS Hover animations */
+.hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+  }
+  .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  /* map formatting */
+  #mapid { 
+        height: 500px; 
+        width: 700px;
+    }
+
+
+    .marker {
+        background-image: url('mapbox-icon.png');
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+      
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+    
