@@ -1,9 +1,10 @@
 // Our data object that will be sent via post request to the server to be used in our Yelp API search
 let yelpSearchParams = {
+    term: 'romantic restaurants',
+    limit: '4',
     location: '',
     price: '',
-    open_at: '',
-    attributes: ''
+    open_at: ''
 };
 
 let dateAndTime;
@@ -13,9 +14,10 @@ let dateAndTimeSetter = () => {
         today = today.toISOString();
         today = today.split('T');
         today = today[0];
-        let time = `12:00:00 UTC`
+        let time = `24:00:00 UTC`
         let finalTime = Date.parse(`${today} ${time}`);
         dateAndTime = finalTime / 1000 | 0;
+        yelpSearchParams.open_at = dateAndTime;
     } else if ($('#date').val() == "" && $('#start').val() != "") {
         let today = new Date();
         today = today.toISOString();
@@ -24,31 +26,60 @@ let dateAndTimeSetter = () => {
         let time = ($('#start').val());
         let finalTime = Date.parse(`${today} ${time}`);
         dateAndTime = finalTime / 1000 | 0;
+        yelpSearchParams.open_at = dateAndTime;
     } else if ($('#date').val() != "" && $('#start').val() == "") {
         let today = ($('#date').val());
-        let time = `12:00:00 UTC`
+        let time = `24:00:00 UTC`
         let finalTime = Date.parse(`${today} ${time}`);
         dateAndTime = finalTime / 1000 | 0;
+        yelpSearchParams.open_at = dateAndTime;
     } else if ($('#date').val() != "" && $('#start').val() != "") {
         let today = ($('#date').val());
         let time = ($('#start').val());
         let finalTime = Date.parse(`${today} ${time}`);
         dateAndTime = finalTime / 1000 | 0;
+        yelpSearchParams.open_at = dateAndTime;
     }
-    yelpSearchParams.open_at = dateAndTime;
 }
 
 // index page button listener, calls fuction that sets data object paramaters
 $('#btnIndex').on("click", (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     dateAndTimeSetter();
-    console.log(yelpSearchParams.open_at)
+    console.log(yelpSearchParams);
+    $.ajax({
+        url: "/results/timeInfo",
+        method: 'POST',
+        dataType: 'json',
+        data: yelpSearchParams,
+    }).done((data) => {
+        console.log(`front end data ${data.open_at}`);
+        console.log(data);
+        window.location.href = './price'
+    });
+
 });
+
+let dataQuery = (cb) => {
+    let currentURL = window.location.origin;
+    $.ajax({
+            url: `${currentURL}/results`,
+            method: "GET"
+        })
+        .then((data) => {
+            yelpSearchParams.open_at = data.open_at;
+            yelpSearchParams.location = data.location;
+            yelpSearchParams.price = data.price;
+            console.log(data);
+            console.log(yelpSearchParams);
+            cb(yelpSearchParams);
+        });
+}
 
 let priceBuilder = () => {
     let priceArr = [];
     if ($('#1').prop('checked') == false && $('#2').prop('checked') == false && $('#3').prop('checked') == false && $('#4').prop('checked') == false) {
-        let defaultPrice = [2, 3];
+        let defaultPrice = `2,3`;
         yelpSearchParams.price = defaultPrice;
     } else {
         if ($('#1').is(':checked')) {
@@ -63,7 +94,7 @@ let priceBuilder = () => {
         if ($('#4').is(':checked')) {
             priceArr.push(4);
         }
-        let priceHolder = priceArr.slice(',');
+        let priceHolder = priceArr.toString();
         yelpSearchParams.price = priceHolder;
     }
 }
@@ -77,37 +108,41 @@ let zipcodeSetter = () => {
 }
 
 $('#btnPrice').on("click", (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     priceBuilder();
     zipcodeSetter();
-    console.log(yelpSearchParams.location);
-    console.log(yelpSearchParams.price);
+    console.log(yelpSearchParams);
+    $.ajax({
+        url: "/results/priceInfo",
+        method: 'POST',
+        dataType: 'json',
+        data: yelpSearchParams,
+    }).done((data) => {
+        console.log(data);
+        console.log(data.name);
+        console.log(data.price);
+        console.log(`This should be a unix value: ${data.open_at}`);
+        window.location.href = './movies'
+    });
 });
 
-
-// Original routing attempt
-// let priceSetter = (selectedPrice) => {
-//     $.get(`/restaurant/${selectedPrice}`, (data) => {
-//         console.log(data);
-//         console.log(`Restaurant: ${data.name}
-// Price: ${data.price}
-// Category: ${data.categories[0].title}
-// Address:
-// ${data.location.address1}
-// ${data.location.city}
-// ${data.location.zip_code}
-// Yelp Link: ${data.url}`);
-//     });
-// }
-
-// let dateSetter = (selectedDate) => {
-//     $.get(`/restaurant/${selectedDate}`, (data) => {
-//         console.log(data);
-//     })
-// }
-
-// let zipcodeSetter = (selectedZipcode) => {
-//     $.get(`/restaurant/${selectedZipcode}`, (data) => {
-//         console.log(data);
-//     });
-// }
+$('#btnMovies').on("click", (event) => {
+    event.preventDefault();
+    dataQuery((data) => {
+        console.log("front end check", data);
+        $.ajax({
+            url: "/results/data",
+            method: 'POST',
+            dataType: 'json',
+            data: data,
+        }).done((data) => {
+            console.log(data);
+            // let resultsData = data;
+            // let restaurantDiv = $('<div>');
+            // let restaurantSpan = $('<span>').html(`${data.name}`);
+            // restaurantDiv.append(restaurantSpan);
+            // $('#restaurantData').prepend(restaurantDiv);
+            // window.location.href = './searchResults'
+        });
+    });
+});
