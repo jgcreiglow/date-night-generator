@@ -1,11 +1,12 @@
 /* nav & footer formatting */
 
 .jumbotron{
-    padding-bottom: 20%; 
-    height: auto;
-    width: 100%;
-    background-color:rgb(60, 62, 66);
-    overflow: hidden;
+    height: 400px;
+    width: 90%;
+    margin: 20px;
+    margin-bottom: 300px;
+    background-color:rgb(91, 92, 95);
+    margin-left:5%
 }
 
 
