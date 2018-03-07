@@ -116,21 +116,19 @@ app.listen(PORT, () => {
 
 //The movie DB API Stuff
 
-let settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://api.themoviedb.org/3/movie/now_playing?page=1&language=en-US&api_key=b6922fe11ecf52925434dafab05830ce",
-    "method": "GET",
-    "headers": {},
-    "data": "{}",
-}
+// let settings = {
+//     "async": true,
+//     "crossDomain": true,
+//     "url": "https://api.themoviedb.org/3/movie/now_playing?page=1&language=en-US&api_key=b6922fe11ecf52925434dafab05830ce",
+//     "method": "GET",
+//     "headers": {},
+//     "data": "{}",
+// }
     
-    $.ajax(settings).done(function(response){
-        console.log(response);
-});
-    
-  
-  
-   
+//     $.ajax(settings).done(function(response){
+//         console.log(response);
+// });
+
+
 
 

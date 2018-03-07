@@ -11,16 +11,18 @@
         crossorigin="anonymous">
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="/Users/jessica/apps/date-night-generator/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/Users/maxcliff/apps/date-night-generator/assets/css/style.css">
 
       <!-- font awesome -->
   <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
+  
 </head>
 
 <body>
  <!-- Navbar for top -->
     <nav class="navbar sticky-top justify-content-md-center">  
-        <img src = "/Users/jessica/apps/date-night-generator/assets/images/logo.png" alt="logo"> 
+        <img src = "/Users/maxcliff/apps/date-night-generator/assets/images/logo.png" alt="logo"> 
     </nav>
     <nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">                    
         <ol class="breadcrumb">         
@@ -83,6 +85,49 @@
             </a> 
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        
+    var randomMovieArray= ["Black Panther", "Fifty Shades Freed", "Coco", "Red Sparrow"];
+      
+    var randomNumber = Math.floor(Math.random() * randomMovieArray.length - 1);
+        
+        //   console.log(randomNumber);
+       
+    var randomMovie = randomMovieArray[randomNumber];
+    
+    
+    
+    function apiCall(){
+        //   console.log(randomMovie)
+        $.getJSON('https://api.themoviedb.org/3/movie/now_playing?api_key=b6922fe11ecf52925434dafab05830ce&language=en-US&page=1' + encodeURI(randomMovie)).then(function(response){
+            
+            console.log(response.results[5]);
+                 var image = response.results[5].poster_path;{
+                    if (image !== "N/A"){
+                        var src =" http://image.tmdb.org/t/p/w185/" + image;
+                        $('img').attr('src', src);
+
+                        
+                    }
+
+                }
+                });
+            
+            }
+
+
+                  
+    
+                  
+        //       })
+        //   };
+    
+          apiCall();
+            
+            
+            
+        </script>
     <footer class = "navbar fixed-bottom justify-content-md-center">
         <p>
             powered by: 
@@ -92,6 +137,7 @@
             <i class="fa fa-coffee"></i>
         </p>
     </footer>
+   
 </body>
 
 </html>

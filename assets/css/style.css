@@ -26,3 +26,8 @@ body {
     text-decoration: none;
     color:rgb(95,168,85);
 }
+
+img{
+    border: solid black;
+    border-width: 2px;
+}
