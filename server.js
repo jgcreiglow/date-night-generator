@@ -20,6 +20,7 @@ const yelp = require('yelp-fusion');
 const apiKey = 'pXXnRa6C4iBeCevtqx0sY-fy-foonaKcKeRRLC9mjb2iDcyBAS8atAR2FDRzgYgewOFlqMoutS50Vwhgax964JKjJN7VwLYY9_GSsoEjiqxIwFskAP5hSQTJ2H-cWnYx';
 const client = yelp.client(apiKey);
 
+
 // Interacting with response object
 // Restaurant name
 // response.jsonBody.businesses[0].name
@@ -112,3 +113,24 @@ app.get("/results", (req, res) => {
 app.listen(PORT, () => {
     console.log("App listening on PORT " + PORT);
 });
+
+//The movie DB API Stuff
+
+let settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://api.themoviedb.org/3/movie/now_playing?page=1&language=en-US&api_key=b6922fe11ecf52925434dafab05830ce",
+    "method": "GET",
+    "headers": {},
+    "data": "{}",
+}
+    
+    $.ajax(settings).done(function(response){
+        console.log(response);
+});
+    
+  
+  
+   
+
+
