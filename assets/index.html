@@ -12,49 +12,73 @@
 
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Romanesco" rel="stylesheet">
+
+    
     <!-- font awesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-
 </head>
 
 <body>
     <!-- Navbar for top -->
-    <nav class="navbar sticky-top justify-content-md-center">
-        <img src="./images/logo.png" alt="logo">
-    </nav>
-    <nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">
-        <ol class="breadcrumb">
+    <header align="center">
+            <video autoplay playsinline muted preload poster="./images/logoPic.png">
+                <source width="150" height="100" controls src="https://ak2.picdn.net/shutterstock/videos/30309442/preview/stock-footage-couple-in-love-kiss-walking-on-sunset-silhouette-nature-slow-motion-video-man-and-woman-silhouette.mp4" />
+            </video>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 255">
+                <defs>
+                    <mask id="mask" x="0" y="0" width="100%" height="80%" >
+                        <rect x="0" y="0" width="100%" height="69px"/>
+                        <text class="tag" x="5"  y="20"> 
+                                let us plan your perfect night out
+                            </text>
+                        <text class="logo" x="55"  y="60"> 
+                            DATE     NIGHT
+                        </text>
+                    </mask>
+                </defs>
+                <rect x="0" y="-40" width="100%" height="80%" />
+            </svg>
+        </header>
+    
+    <nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">                    
+        <ol class="breadcrumb">         
             <li class="breadcrumb-item" aria-current="page">
                 <i class="fa fa-calendar-alt"></i>
             </li>
         </ol>
     </nav>
 
-
-    <!-- title question box  -->
-    <div class="container-fluid">
-        <div class="row justify-content-md-center">
-            <h2> When do you want to go on your date?</h2>
-        </div>
+    <div class = "container-fluid">
+        
         <!-- content  -->
         <div class="row justify-content-md-center">
-            <input id="date" type="date" value=""> </input>
-        </div>
-        <div class="row justify-content-md-center">
-            <div class="col-md-offset-1 col-md-auto">
+            <div class="col-md-auto content rounded">
+                <h2> When Is Your Date?</h2>
+                <hr>
+                <div class="row justify-content-md-center">
+                <input id="date" type="date"> </input>
+                </div>
+            </div>
+            <div class="content rounded col-md-auto">
                 <div class="row justify-content-md-center">
                     <h3>What time does the date start?</h3>
                 </div>
+                <hr>
                 <div class="row justify-content-md-center">
                     <input id="start" type="time" value=""> </input>
                 </div>
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-auto">
+
+            <div class="content rounded col-md-auto">
                 <div class="row justify-content-md-center">
-                    <h3>How long do you want the date to be? </h3>
+                    <h3>How many hours are you planning? </h3>
                 </div>
+                <hr>
                 <div class="row justify-content-md-center">
                     <input id="length" type="number"> </input>
                 </div>
@@ -63,28 +87,38 @@
 
         <!-- button to go to next page -->
         <div class="row justify-content-md-center">
-            <a href="./price.html">
-                <button id="btnIndex" class="btn-lg">
-                    <i class="fa fa-arrow-alt-circle-right justify-content-center">
-                    </i>
-                    <br> Next
+            <a href="./price.html"> 
+                <button id="btnIndex" class="btn-lg hvr-grow-shadow"> 
+                    <i class="fa fa-arrow-alt-circle-right justify-content-center"> 
+                    </i> 
+                    <br>
+                    Next
                 </button>
             </a>
         </div>
     </div>
 
-    <footer class="navbar fixed-bottom justify-content-md-center">
-        <p>
-            powered by:
-            <i class="fab fa-yelp"></i>
-            <i class="fab fa-node"></i>
-            <i class="fab fa-js"></i>
-            <i class="fa fa-coffee"></i>
-        </p>
-    </footer>
+
+<footer class = "navbar fixed-bottom justify-content-md-center">
+    <p>
+        powered by: 
+        <i class="fab fa-yelp" ></i>
+        <i class="fab fa-node" ></i>
+        <i class="fab fa-js"></i>
+        <i class="fa fa-coffee"></i>
+    </p>
+</footer>
+
+<script type="text/javascript">
+const video = document.querySelector("video");
+    if (window.matchMedia('(prefers-reduced-motion)').matches) {
+      video.removeAttribute("autoplay");
+      video.pause();
+    }</script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="./app.js"></script>
+
 </body>
 
 </html>
