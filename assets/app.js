@@ -40,6 +40,15 @@ const dateAndTimeSetter = () => {
         dateAndTime = finalTime / 1000 | 0;
         yelpSearchParams.open_at = dateAndTime;
     }
+    $.ajax({
+            url: "/results/timeInfo",
+            method: 'POST',
+            dataType: 'json',
+            data: yelpSearchParams,
+        })
+        .done((data) => {
+            window.location.href = './price'
+        });
 }
 
 const priceBuilder = () => {
@@ -71,10 +80,20 @@ const zipcodeSetter = () => {
         zipcode = `20005`;
     } else zipcode = $('#zipcode').val();
     yelpSearchParams.location = zipcode;
+    $.ajax({
+        url: "/results/priceInfo",
+        method: 'POST',
+        dataType: 'json',
+        data: yelpSearchParams,
+    }).done((data) => {
+        window.location.href = './movies'
+    });
 }
 
 const termUpdater = () => {
     yelpSearchParams.term = `Fun Things to Do on Date Night`;
+    yelpSearchParams.price = '1,2,3,4';
+    yelpSearchParams.limit = '10';
     $.ajax({
         url: "/results/term",
         method: 'POST',
@@ -127,29 +146,12 @@ const yelpSearchTwo = (data) => {
 $('#btnIndex').on("click", (event) => {
     event.preventDefault();
     dateAndTimeSetter();
-    $.ajax({
-        url: "/results/timeInfo",
-        method: 'POST',
-        dataType: 'json',
-        data: yelpSearchParams,
-    }).done((data) => {
-        window.location.href = './price'
-    });
-
 });
 
 $('#btnPrice').on("click", (event) => {
     event.preventDefault();
     priceBuilder();
     zipcodeSetter();
-    $.ajax({
-        url: "/results/priceInfo",
-        method: 'POST',
-        dataType: 'json',
-        data: yelpSearchParams,
-    }).done((data) => {
-        window.location.href = './movies'
-    });
 });
 
 $('#btnMovies').on("click", (event) => {
