@@ -57,9 +57,13 @@
             <div class="col-md-offset-1 col-md-auto">
                 <div class="row justify-content-md-center">
                     <h3>By Movie</h3>
+                    <img id = "movieChoice">
                 </div>
                 <div class="row justify-content-md-center">
                     <input id="title" type="text" placeholder="Movie Title"> </input>
+                </div>
+                <div class= "row justify-content-md-center">
+                    <img id= "moviePoster">
                 </div>
             </div>
             <div class = "col-md-2"></div>
@@ -75,14 +79,14 @@
 
          <!-- button to go to next page -->
         <div class="row justify-content-md-center">
-            <a href="./results.html"> 
+            <!-- <a href="./results.html">  -->
                 <button id="btnIndex" class="btn-lg"> 
                     <i class="fa fa-arrow-alt-circle-right justify-content-center"> 
                     </i> 
                     <br>
                     Next
                 </button>
-            </a> 
+            <!-- </a>  -->
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -97,33 +101,33 @@
     var randomMovie = randomMovieArray[randomNumber];
     
     
-    
+    $("#btnIndex").on("click", function(){
+        apiCall()
+    })
     function apiCall(){
         //   console.log(randomMovie)
         $.getJSON('https://api.themoviedb.org/3/movie/now_playing?api_key=b6922fe11ecf52925434dafab05830ce&language=en-US&page=1' + encodeURI(randomMovie)).then(function(response){
-            
+    var userInput = $("#title").val()
+    for(var i = 0; i< response.results.length; i++){
+        
+        if (response.results[i].title.indexOf(userInput)>-1){
+
+    var image = response.results[i].poster_path;
+        if (image !== "N/A"){
+
+    var src =" http://image.tmdb.org/t/p/w185/" + image;
+        $('#movieChoice').attr('src', src);
+
+        }
+            console.log(response.results)
+        }
             console.log(response.results[5]);
-                 var image = response.results[5].poster_path;{
-                    if (image !== "N/A"){
-                        var src =" http://image.tmdb.org/t/p/w185/" + image;
-                        $('img').attr('src', src);
-
-                        
-                    }
-
                 }
-                });
+            });
             
-            }
-
-
-                  
+        };
     
-                  
-        //       })
-        //   };
-    
-          apiCall();
+         
             
             
             
