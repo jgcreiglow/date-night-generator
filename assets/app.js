@@ -117,6 +117,7 @@ const dataQuery = (cb) => {
         });
 }
 
+// Restaurant result function
 const yelpSearch = (data) => {
     $.ajax({
         url: "/results/data",
@@ -125,9 +126,12 @@ const yelpSearch = (data) => {
         data: data,
     }).done((data) => {
         console.log(data);
+        $("#restaurantData").html = "<p>" + data[0].name + "</p>";
         return data;
     });
 }
+
+// Fun stuff result function
 
 const yelpSearchTwo = (data) => {
     termUpdater();

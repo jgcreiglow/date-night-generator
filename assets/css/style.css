@@ -1,7 +1,7 @@
 /* nav & footer formatting */
 
 .jumbotron {
-    height: 400px;
+    height: auto;
     width: 90%;
     margin: 20px;
     margin-bottom: 300px;
@@ -22,27 +22,28 @@
 }
 
 /* breadcrumb formatting */
-
 .breadcrumb {
     background-color: rgb(60, 62, 66);
     color: rgb(134, 124, 76);
 }
 
-.breadcrumb a {
-    text-decoration: none;
-    color: lightgrey;
-}
+
 
 /* document formatting */
 
 body {
-    background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: rgb(60, 62, 66);
     padding-bottom: 70px;
 }
 
+a {
+    text-decoration: none;
+    color: lightgrey;
+}
+
+.data{
+  color: lightgrey;
+}
 /* title formatting */
 
 .title {
