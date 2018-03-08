@@ -6,8 +6,8 @@ let yelpSearchParams = {
     price: '',
     open_at: ''
 };
-
 let dateAndTime;
+
 const dateAndTimeSetter = () => {
     if ($('#date').val() == "" && $('#start').val() == "") {
         let today = new Date();
@@ -42,21 +42,6 @@ const dateAndTimeSetter = () => {
     }
 }
 
-// index page button listener, calls fuction that sets data object paramaters
-$('#btnIndex').on("click", (event) => {
-    event.preventDefault();
-    dateAndTimeSetter();
-    $.ajax({
-        url: "/results/timeInfo",
-        method: 'POST',
-        dataType: 'json',
-        data: yelpSearchParams,
-    }).done((data) => {
-        window.location.href = './price'
-    });
-
-});
-
 const priceBuilder = () => {
     let priceArr = [];
     if ($('#1').prop('checked') == false && $('#2').prop('checked') == false && $('#3').prop('checked') == false && $('#4').prop('checked') == false) {
@@ -87,20 +72,6 @@ const zipcodeSetter = () => {
     } else zipcode = $('#zipcode').val();
     yelpSearchParams.location = zipcode;
 }
-
-$('#btnPrice').on("click", (event) => {
-    event.preventDefault();
-    priceBuilder();
-    zipcodeSetter();
-    $.ajax({
-        url: "/results/priceInfo",
-        method: 'POST',
-        dataType: 'json',
-        data: yelpSearchParams,
-    }).done((data) => {
-        window.location.href = './movies'
-    });
-});
 
 const termUpdater = () => {
     yelpSearchParams.term = `Fun Things to Do on Date Night`;
@@ -151,6 +122,35 @@ const yelpSearchTwo = (data) => {
         return data;
     });
 }
+
+// index page button listener, calls fuction that sets data object paramaters
+$('#btnIndex').on("click", (event) => {
+    event.preventDefault();
+    dateAndTimeSetter();
+    $.ajax({
+        url: "/results/timeInfo",
+        method: 'POST',
+        dataType: 'json',
+        data: yelpSearchParams,
+    }).done((data) => {
+        window.location.href = './price'
+    });
+
+});
+
+$('#btnPrice').on("click", (event) => {
+    event.preventDefault();
+    priceBuilder();
+    zipcodeSetter();
+    $.ajax({
+        url: "/results/priceInfo",
+        method: 'POST',
+        dataType: 'json',
+        data: yelpSearchParams,
+    }).done((data) => {
+        window.location.href = './movies'
+    });
+});
 
 $('#btnMovies').on("click", (event) => {
     event.preventDefault();
