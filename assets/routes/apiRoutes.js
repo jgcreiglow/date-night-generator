@@ -11,13 +11,17 @@ module.exports = (app) => {
 
     app.post('/results/timeInfo', (req, res) => {
         yelpSearchParams.open_at = req.body.open_at;
-        console.log(`this is the server open at time: ${yelpSearchParams.open_at}`);
         res.json(yelpSearchParams);
     });
 
     app.post('/results/priceInfo', (req, res) => {
         yelpSearchParams.location = req.body.location;
         yelpSearchParams.price = req.body.price;
+        res.json(yelpSearchParams);
+    });
+
+    app.post('/results/term', (req, res) => {
+        yelpSearchParams.term = req.body.term;
         res.json(yelpSearchParams);
     });
 

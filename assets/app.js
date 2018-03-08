@@ -46,35 +46,16 @@ let dateAndTimeSetter = () => {
 $('#btnIndex').on("click", (event) => {
     event.preventDefault();
     dateAndTimeSetter();
-    console.log(yelpSearchParams);
     $.ajax({
         url: "/results/timeInfo",
         method: 'POST',
         dataType: 'json',
         data: yelpSearchParams,
     }).done((data) => {
-        console.log(`front end data ${data.open_at}`);
-        console.log(data);
         window.location.href = './price'
     });
 
 });
-
-let dataQuery = (cb) => {
-    let currentURL = window.location.origin;
-    $.ajax({
-            url: `${currentURL}/results`,
-            method: "GET"
-        })
-        .then((data) => {
-            yelpSearchParams.open_at = data.open_at;
-            yelpSearchParams.location = data.location;
-            yelpSearchParams.price = data.price;
-            console.log(data);
-            console.log(yelpSearchParams);
-            cb(yelpSearchParams);
-        });
-}
 
 let priceBuilder = () => {
     let priceArr = [];
@@ -111,62 +92,58 @@ $('#btnPrice').on("click", (event) => {
     event.preventDefault();
     priceBuilder();
     zipcodeSetter();
-    console.log(yelpSearchParams);
     $.ajax({
         url: "/results/priceInfo",
         method: 'POST',
         dataType: 'json',
         data: yelpSearchParams,
     }).done((data) => {
-        console.log(data);
-        console.log(data.name);
-        console.log(data.price);
-        console.log(`This should be a unix value: ${data.open_at}`);
         window.location.href = './movies'
     });
 });
 
+let termUpdater = () => {
+    yelpSearchParams.term = `Fun Things to Do on Date Night`;
+    $.ajax({
+        url: "/results/term",
+        method: 'POST',
+        dataType: 'json',
+        data: yelpSearchParams,
+    }).done((data) => {
+        console.log(data);
+    });
+}
+
+let dataQuery = (cb) => {
+    let currentURL = window.location.origin;
+    $.ajax({
+            url: `${currentURL}/results`,
+            method: "GET"
+        })
+        .done((data) => {
+            yelpSearchParams.open_at = data.open_at;
+            yelpSearchParams.location = data.location;
+            yelpSearchParams.price = data.price;
+            yelpSearchParams.term = data.term;
+            cb(yelpSearchParams);
+        });
+}
+
+const yelpSearch = (data) => {
+    $.ajax({
+        url: "/results/data",
+        method: 'POST',
+        dataType: 'json',
+        data: data,
+    }).done((data) => {
+        console.log(data);
+        return data;
+    });
+}
+
 $('#btnMovies').on("click", (event) => {
     event.preventDefault();
     dataQuery((data) => {
-        console.log("front end check", data);
-        $.ajax({
-            url: "/results/data",
-            method: 'POST',
-            dataType: 'json',
-            data: data,
-        }).done((data) => {
-            console.log(data[0]);
-            console.log(data[0].name);
-            console.log(data[0].price);
-            console.log(data[0].title);
-            console.log(data[0].location.address1);
-            console.log(data[0].location.city);
-            console.log(data[0].location.zip_code);
-            console.log(data[0].url);
-            console.log(data[0].coordinates);
-            console.log(data[1]);
-            console.log(data[2]);
-            console.log(data[3]);
-            // Interacting with response object
-            // Restaurant name
-            // response.jsonBody.businesses[0].name
-            // Restaurant price
-            // response.jsonBody.businesses[0].price
-            // Category (Food type)
-            // response.jsonBody.businesses[0].categories[0].title
-            // Restaurant address
-            // response.jsonBody.businesses[0].location.address1
-            // response.jsonBody.businesses[0].location.city
-            // response.jsonBody.businesses[0].location.zip_code
-            // Restaurant Yelp link
-            // response.jsonBody.businesses[0].url
-            // let resultsData = data;
-            // let restaurantDiv = $('<div>');
-            // let restaurantSpan = $('<span>').html(`${data.name}`);
-            // restaurantDiv.append(restaurantSpan);
-            // $('#restaurantData').prepend(restaurantDiv);
-            // window.location.href = './searchResults'
-        });
-    });
+        yelpSearch(data)
+    })
 });
