@@ -112,7 +112,6 @@ const dataQuery = (cb) => {
             yelpSearchParams.open_at = data.open_at;
             yelpSearchParams.location = data.location;
             yelpSearchParams.price = data.price;
-            // yelpSearchParams.term = data.term;
             cb(yelpSearchParams);
         });
 }

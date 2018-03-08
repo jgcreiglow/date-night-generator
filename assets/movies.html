@@ -58,75 +58,78 @@
             </li>
         </ol>
     </nav>
-    <div class = "jumbotron">
-            <!-- content box -->
-      <div class="row">
-          <!-- restaurant results -->
-          <div class="content rounded col-md-3">
-            <div class="row justify-content-md-center">
-                <h3>Restaurants</h3>
-            </div>
-            <hr>
-            <div id = "restaurantResults" class = "data">
-              <div class="row justify-content-md-center">
-                <div id="restaurantData" class="col-md-3"></div>
-              </div>
-              <div class ="row">
-                <div class="col-md-7">
-                  <a href="http://www.stickyricedc.com" target="blank">
-                    <h4> Sticky Rice </h4>
-                  </a>
+    <div class="jumbotron">
+        <!-- content box -->
+        <div class="row">
+            <!-- restaurant results -->
+            <div class="content rounded col-md-3">
+                <div class="row justify-content-md-center">
+                    <h3>Restaurants</h3>
                 </div>
-                <div class="col-md-1 justify-content-md-center">
-                  <a href="https://www.yelp.com/biz/sticky-rice-washington" target="blank"><i class= "fab fa-yelp"></i></a>
+                <hr>
+                <div id="restaurantResults" class="data">
+                    <div class="row justify-content-md-center">
+                        <div id="restaurantData" class="col-md-3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a href="http://www.stickyricedc.com" target="blank">
+                                <h4> Sticky Rice </h4>
+                            </a>
+                        </div>
+                        <div class="col-md-1 justify-content-md-center">
+                            <a href="https://www.yelp.com/biz/sticky-rice-washington" target="blank">
+                                <i class="fab fa-yelp"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-1 justify-content-md-center">
+                            <h4> $$ </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>1224 H St NE
+                                <br> Washington, DC 20002 </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-1 justify-content-md-center">
-                  <h4> $$ </h4>
+            </div>
+
+            <!-- map results -->
+            <div class="content rounded col-md-4">
+                <div class="row justify-content-md-center">
+                    <h3>Results Map</h3>
                 </div>
-              </div>
-              <div class="row">
-                <div class ="col-md-8">
-                  <p>1224 H St NE <br> Washington, DC 20002 </p>
+                <hr>
+                <div id="map"></div>
+            </div>
+
+            <!-- Fun activities results -->
+            <div class="content rounded col-md-3">
+                <div class="row justify-content-md-center">
+                    <h3>Fun Things Nearby</h3>
                 </div>
-              </div>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div id="funData" class="col-md-3"></div>
+                </div>
             </div>
-          </div>
-
-          <!-- map results -->
-          <div class="content rounded col-md-4">
-            <div class="row justify-content-md-center">
-                <h3>Results Map</h3>
-            </div>
-            <hr>
-              <div id="map"></div>
-          </div>
-
-          <!-- Fun activities results -->
-          <div class="content rounded col-md-3">
-            <div class="row justify-content-md-center">
-                <h3>Fun Things Nearby</h3>
-            </div>
-            <hr>
-            <div class="row justify-content-md-center">
-              <div id="funData" class="col-md-3"></div>
-            </div>
-          </div>
 
 
-      </div>
-      <div id="resultsDiv"></div>
+        </div>
+        <div id="resultsDiv"></div>
 
-      <!-- button to go to next page -->
-      <div class="row justify-content-md-center">
+        <!-- button to go to next page -->
+        <div class="row justify-content-md-center">
 
-          <a href="./results.html">
-              <button id="btnMovies" class="btn-lg hvr-grow-shadow">
-                  <i class="fa fa-arrow-alt-circle-right justify-content-center">
-                  </i>
-                  <br> Get your Results!
-              </button>
-          </a>
-      </div>
+            <a href="./results.html">
+                <button id="btnMovies" class="btn-lg hvr-grow-shadow">
+                    <i class="fa fa-arrow-alt-circle-right justify-content-center">
+                    </i>
+                    <br> Get your Results!
+                </button>
+            </a>
+        </div>
     </div>
 
     <footer class="navbar fixed-bottom justify-content-md-center">
@@ -144,9 +147,9 @@
     <script src="./app.js"></script>
 
     <!-- Maps -->
-    <script type="text/javascript" src="./date-night-generator/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZQJjiBuo7YXPpP38_ELv5bva4Bhgldqg&callback=initMap"
-    async defer></script>
+    <script type="text/javascript" src="./map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZQJjiBuo7YXPpP38_ELv5bva4Bhgldqg&callback=initMap" async
+        defer></script>
 </body>
 
 </html>
