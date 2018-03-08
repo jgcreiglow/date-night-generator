@@ -11,54 +11,64 @@
         crossorigin="anonymous">
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="/Users/maxcliff/apps/date-night-generator/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
-      <!-- font awesome -->
-  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-
-  
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    
+    <!-- font awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 </head>
 
 <body>
  <!-- Navbar for top -->
-    <nav class="navbar sticky-top justify-content-md-center">  
-        <img src = "/Users/maxcliff/apps/date-night-generator/assets/images/logo.png" alt="logo"> 
-    </nav>
+ <header align="center">
+        <video autoplay playsinline muted preload poster="./images/logoPic.png">
+        </video>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 255">
+            <defs>
+                <mask id="mask" x="0" y="0" width="100%" height="80%" >
+                    <rect x="0" y="0" width="100%" height="69px"/>
+                    <text class="tag" x="5"  y="20"> 
+                            let us plan your perfect night out
+                        </text>
+                    <text class="logo" x="55"  y="60"> 
+                        DATE     NIGHT
+                    </text>
+                </mask>
+            </defs>
+            <rect x="0" y="-60" width="100%" height="80%" />
+        </svg>
+    </header>
     <nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">                    
         <ol class="breadcrumb">         
             <li class="breadcrumb-item active" aria-current="page">
-                <a href="./index.html"> 
+                <a href="./index.html">
                     <i class="fa fa-calendar-alt"></i>
                 </a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">             
-                <a href="./price.html">         
-                    <i class="fa fa-utensils"></i> 
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="./price.html">
+                    <i class="fa fa-utensils"></i>
                 </a>
             </li>
-            <li class="breadcrumb-item" aria-current="page">             
-                    <i class="fa fa-film"></i> 
-            </li>           
+            <li class="breadcrumb-item" aria-current="page">
+                <i class="fa fa-film"></i>
+            </li>
         </ol>
     </nav>
-
-
     <div class = "container-fluid">
-                <!-- title question box  -->
-        <div class="col-md-offset-1 col-md-auto">
-            <div class="row justify-content-md-center">
-                <h3>Time to pick a movie! </h3>
-            </div>
-        </div>
 
-    <!-- content box -->
+        <!-- content box -->
 
         <div class="row justify-content-md-center">
-            <div class="col-md-offset-1 col-md-auto">
+            <div class="content rounded col-md-auto">
                 <div class="row justify-content-md-center">
                     <h3>By Movie</h3>
                     <img id = "movieChoice">
                 </div>
+                <hr>
                 <div class="row justify-content-md-center">
                     <input id="title" type="text" placeholder="Movie Title"> </input>
                 </div>
@@ -66,82 +76,44 @@
                     <img id= "moviePoster">
                 </div>
             </div>
-            <div class = "col-md-2"></div>
-            <div class="col-md-auto">
+
+            <div class = "col-md-1"></div>
+            <div class="content rounded col-md-auto">
                 <div class="row justify-content-md-center">
-                    <h3>By location </h3>
+                    <h3>By Location </h3>
                 </div>
+                <hr>
                 <div class="row justify-content-md-center">
                     <input id="zipcode" type="number" placeholder="zip code"> </input>
                 </div>
             </div>
         </div>
 
-         <!-- button to go to next page -->
+        <!-- button to go to next page -->
         <div class="row justify-content-md-center">
-            <!-- <a href="./results.html">  -->
-                <button id="btnIndex" class="btn-lg"> 
+
+            <a href="./results.html"> 
+                <button id="btnMovies" class="btn-lg hvr-grow-shadow"> 
                     <i class="fa fa-arrow-alt-circle-right justify-content-center"> 
                     </i> 
                     <br>
                     Next
                 </button>
-            <!-- </a>  -->
+            </a>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        
-    var randomMovieArray= ["Black Panther", "Fifty Shades Freed", "Coco", "Red Sparrow"];
-      
-    var randomNumber = Math.floor(Math.random() * randomMovieArray.length - 1);
-        
-        //   console.log(randomNumber);
-       
-    var randomMovie = randomMovieArray[randomNumber];
-    
-    
-    $("#btnIndex").on("click", function(){
-        apiCall()
-    })
-    function apiCall(){
-        //   console.log(randomMovie)
-        $.getJSON('https://api.themoviedb.org/3/movie/now_playing?api_key=b6922fe11ecf52925434dafab05830ce&language=en-US&page=1' + encodeURI(randomMovie)).then(function(response){
-    var userInput = $("#title").val()
-    for(var i = 0; i< response.results.length; i++){
-        
-        if (response.results[i].title.indexOf(userInput)>-1){
-
-    var image = response.results[i].poster_path;
-        if (image !== "N/A"){
-
-    var src =" http://image.tmdb.org/t/p/w185/" + image;
-        $('#movieChoice').attr('src', src);
-
-        }
-            console.log(response.results)
-        }
-            console.log(response.results[5]);
-                }
-            });
-            
-        };
-    
-         
-            
-            
-            
-        </script>
-    <footer class = "navbar fixed-bottom justify-content-md-center">
+    <footer class="navbar fixed-bottom justify-content-md-center">
         <p>
-            powered by: 
-            <i class="fab fa-yelp" ></i>
-            <i class="fab fa-node" ></i>
+            powered by:
+            <i class="fab fa-yelp"></i>
+            <i class="fab fa-node"></i>
             <i class="fab fa-js"></i>
             <i class="fa fa-coffee"></i>
         </p>
     </footer>
-   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
 </body>
 
 </html>
