@@ -8,7 +8,7 @@ let yelpSearchParams = {
 };
 
 let dateAndTime;
-let dateAndTimeSetter = () => {
+const dateAndTimeSetter = () => {
     if ($('#date').val() == "" && $('#start').val() == "") {
         let today = new Date();
         today = today.toISOString();
@@ -57,7 +57,7 @@ $('#btnIndex').on("click", (event) => {
 
 });
 
-let priceBuilder = () => {
+const priceBuilder = () => {
     let priceArr = [];
     if ($('#1').prop('checked') == false && $('#2').prop('checked') == false && $('#3').prop('checked') == false && $('#4').prop('checked') == false) {
         let defaultPrice = `2,3`;
@@ -80,7 +80,7 @@ let priceBuilder = () => {
     }
 }
 
-let zipcodeSetter = () => {
+const zipcodeSetter = () => {
     let zipcode;
     if ($('#zipcode').val() == "") {
         zipcode = `20005`;
@@ -102,19 +102,17 @@ $('#btnPrice').on("click", (event) => {
     });
 });
 
-let termUpdater = () => {
+const termUpdater = () => {
     yelpSearchParams.term = `Fun Things to Do on Date Night`;
     $.ajax({
         url: "/results/term",
         method: 'POST',
         dataType: 'json',
         data: yelpSearchParams,
-    }).done((data) => {
-        console.log(data);
-    });
+    })
 }
 
-let dataQuery = (cb) => {
+const dataQuery = (cb) => {
     let currentURL = window.location.origin;
     $.ajax({
             url: `${currentURL}/results`,
@@ -124,7 +122,7 @@ let dataQuery = (cb) => {
             yelpSearchParams.open_at = data.open_at;
             yelpSearchParams.location = data.location;
             yelpSearchParams.price = data.price;
-            yelpSearchParams.term = data.term;
+            // yelpSearchParams.term = data.term;
             cb(yelpSearchParams);
         });
 }
@@ -141,9 +139,23 @@ const yelpSearch = (data) => {
     });
 }
 
+const yelpSearchTwo = (data) => {
+    termUpdater();
+    $.ajax({
+        url: "/results/data",
+        method: 'POST',
+        dataType: 'json',
+        data: data,
+    }).done((data) => {
+        console.log(data);
+        return data;
+    });
+}
+
 $('#btnMovies').on("click", (event) => {
     event.preventDefault();
     dataQuery((data) => {
-        yelpSearch(data)
+        yelpSearch(data);
+        yelpSearchTwo(data);
     })
 });
