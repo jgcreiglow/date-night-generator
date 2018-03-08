@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Date Night Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+
+    <!-- font awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+    crossorigin=""></script>
+</head>
+
+<body>
+ <!-- Navbar for top -->
+<header align="center" class="rounded">
+  <video autoplay playsinline muted preload poster="./images/logoPic.png">
+  </video>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 255">
+      <defs>
+          <mask id="mask" x="0" y="0" width="100%" height="80%" >
+              <rect x="0" y="0" width="100%" height="69px"/>
+              <text class="tag" x="5"  y="20">
+                      let us plan your perfect night out
+                  </text>
+              <text class="logo" x="55"  y="60">
+                  DATE     NIGHT
+              </text>
+          </mask>
+      </defs>
+      <rect x="0" y="-60" width="100%" height="80%" />
+  </svg>
+</header>
+
+<nav class="nav sticky-top justify-content-md-center" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">
+            <a href="./index.html">
+                <i class="fa fa-calendar-alt"></i>
+            </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            <a href="./price.html">
+                <i class="fa fa-utensils"></i>
+            </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            <a href="./movies.html">
+                <i class="fa fa-film"></i>
+            </a>
+        </li>
+        <li class="breadcrumb-item" aria-current="page">
+            <i class="fa fa-heart"></i>
+        </li>
+    </ol>
+</nav>
+
+<div class = "jumbotron">
+        <!-- content box -->
+  <div class="row">
+      <!-- restaurant results -->
+      <div class="content rounded col-md-3">
+        <div class="row justify-content-md-center">
+            <h3>Restaurants</h3>
+        </div>
+        <hr>
+        <div class = "data">
+          <div class="row justify-content-md-center">
+            <div id="restaurantData" class="col-md-3"></div>
+          </div>
+          <div class ="row">
+            <div class="col-md-7">
+              <a href="http://www.stickyricedc.com" target="blank">
+                <h4> Sticky Rice </h4>
+              </a>
+            </div>
+            <div class="col-md-1 justify-content-md-center">
+              <a href="https://www.yelp.com/biz/sticky-rice-washington" target="blank"><i class= "fab fa-yelp"></i></a>
+            </div>
+            <div class="col-md-1 justify-content-md-center">
+              <h4> $$ </h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-8">
+              <p>1224 H St NE <br> Washington, DC 20002 </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- map results -->
+      <div class="content rounded col-md-4">
+        <div class="row justify-content-md-center">
+            <h3>Results Map</h3>
+        </div>
+        <hr>
+          <div id="map"></div>
+      </div>
+
+      <!-- Fun activities results -->
+      <div class="content rounded col-md-3">
+        <div class="row justify-content-md-center">
+            <h3>Fun Things Nearby</h3>
+        </div>
+        <hr>
+        <div class="row justify-content-md-center">
+          <div id="funData" class="col-md-3"></div>
+        </div>
+      </div>
+
+
+  </div>
+
+      <!-- button to go to next page -->
+  <div class="row justify-content-md-center">
+        <a href="./index.html">
+            <button id="btnResults" class="btn-lg hvr-grow-shadow">
+                <i class="fa fa-redo justify-content-center">
+                </i>
+                <br>
+                Reset
+            </button>
+        </a>
+    </div>
+</div>
+
+
+<footer class="navbar fixed-bottom justify-content-md-center">
+        <p>
+            powered by:
+            <i class="fab fa-yelp"></i>
+            <i class="fab fa-node"></i>
+            <i class="fab fa-js"></i>
+            <i class="fa fa-coffee"></i>
+        </p>
+    </footer>
+<script type="text/javascript" src="./date-night-generator/map.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/Users/jessica/apps/date-night-generator/map.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZQJjiBuo7YXPpP38_ELv5bva4Bhgldqg&callback=initMap"
+async defer></script>
+</html>
