@@ -18,20 +18,6 @@ const yelp = require('yelp-fusion');
 const apiKey = 'pXXnRa6C4iBeCevtqx0sY-fy-foonaKcKeRRLC9mjb2iDcyBAS8atAR2FDRzgYgewOFlqMoutS50Vwhgax964JKjJN7VwLYY9_GSsoEjiqxIwFskAP5hSQTJ2H-cWnYx';
 const client = yelp.client(apiKey);
 
-// Interacting with response object
-// Restaurant name
-// response.jsonBody.businesses[0].name
-// Restaurant price
-// response.jsonBody.businesses[0].price
-// Category (Food type)
-// response.jsonBody.businesses[0].categories[0].title
-// Restaurant address
-// response.jsonBody.businesses[0].location.address1
-// response.jsonBody.businesses[0].location.city
-// response.jsonBody.businesses[0].location.zip_code
-// Restaurant Yelp link
-// response.jsonBody.businesses[0].url
-
 searchRequest = {
     term: 'romantic restaurants',
     location: '20011',
@@ -41,12 +27,8 @@ searchRequest = {
 };
 
 module.exports.yelpSearch = (data, callback) => client.search(data).then(response => {
-    let firstResult = response.jsonBody.businesses[0];
-    let secondResult = response.jsonBody.businesses[1];
-    let thirdResult = response.jsonBody.businesses[2];
-    let fourthResult = response.jsonBody.businesses[3];
-    // console.log(firstResult);
-    callback(firstResult);
+    let yelpResults = response.jsonBody.businesses;
+    callback(yelpResults);
 
 }).catch(e => {
     console.log(e);

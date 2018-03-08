@@ -118,7 +118,6 @@ const dataQuery = (cb) => {
 }
 
 // Restaurant result function
-
 const yelpSearch = (data) => {
     $.ajax({
         url: "/results/data",
