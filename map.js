@@ -1,8 +1,9 @@
-import { text } from "../../Library/Caches/typescript/2.6/node_modules/@types/body-parser";
+
 
 var map;
 var service;
 var infoWindow;
+
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -10,7 +11,7 @@ function initMap() {
     zoom: 13,
   });
   var request = {
-    location: WashDc,
+    location: "WashDc",
     radius: '500',
     query: 'parks'
   };
