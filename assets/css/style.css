@@ -35,7 +35,7 @@
 
 /* document formatting */
 body {
-    background-image: url("./images/background.jpg");    
+    background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     background-attachment: fixed;
@@ -44,7 +44,7 @@ body {
 
 /* title formatting */
 
-.title 
+.title
 {
     background-color:rgb(152,126,98);
     color:rgb(60, 62, 66);
@@ -100,8 +100,8 @@ hr{
   }
 
   /* map formatting */
-  #mapid { 
-        height: 400px; 
+  #mapid {
+        height: 400px;
         width: 600px;
         margin: 10px;
     }
@@ -119,12 +119,12 @@ hr{
       .mapboxgl-popup {
         max-width: 200px;
       }
-      
+
       .mapboxgl-popup-content {
         text-align: center;
         font-family: 'Open Sans', sans-serif;
       }
-    
+
 
 
       @font-face {
@@ -135,7 +135,7 @@ body {
     background-color:rgb(60, 62, 66);
   /* margin: 2rem; */
 }
-header { 
+header {
   width: 100%;
   margin: auto;
   height: 300px;
@@ -146,7 +146,7 @@ header {
 }
 header video { width: 100%; }
 
-svg { 
+svg {
   width: 100%;
   position:absolute;
   top: 0;
@@ -175,6 +175,6 @@ mask{
 }
 
 .tag{
-    font-family: 'Roboto Condensed', sans-serif; 
+    font-family: 'Roboto Condensed', sans-serif;
     font-size: 10px;
 }

@@ -136,7 +136,31 @@ $('#btnMovies').on("click", (event) => {
             dataType: 'json',
             data: data,
         }).done((data) => {
-            console.log(data);
+            console.log(data[0]);
+            console.log(data[0].name);
+            console.log(data[0].price);
+            console.log(data[0].title);
+            console.log(data[0].location.address1);
+            console.log(data[0].location.city);
+            console.log(data[0].location.zip_code);
+            console.log(data[0].url);
+            console.log(data[0].coordinates);
+            console.log(data[1]);
+            console.log(data[2]);
+            console.log(data[3]);
+            // Interacting with response object
+            // Restaurant name
+            // response.jsonBody.businesses[0].name
+            // Restaurant price
+            // response.jsonBody.businesses[0].price
+            // Category (Food type)
+            // response.jsonBody.businesses[0].categories[0].title
+            // Restaurant address
+            // response.jsonBody.businesses[0].location.address1
+            // response.jsonBody.businesses[0].location.city
+            // response.jsonBody.businesses[0].location.zip_code
+            // Restaurant Yelp link
+            // response.jsonBody.businesses[0].url
             // let resultsData = data;
             // let restaurantDiv = $('<div>');
             // let restaurantSpan = $('<span>').html(`${data.name}`);
