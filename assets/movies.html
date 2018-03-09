@@ -63,11 +63,11 @@
 
         <!-- button to go to next page -->
         <div class="row justify-content-md-center animated bounceInDown">
-          <button id="btnMovies" class="btn-lg hvr-grow-shadow">
-              <i class="fa fa-heart justify-content-center">
-              </i>
-              <br> Click for Results!
-          </button>
+            <button id="btnMovies" class="btn-lg hvr-grow-shadow">
+                <i class="fa fa-heart justify-content-center">
+                </i>
+                <br> Click for Results!
+            </button>
         </div>
 
         <div class="row">
@@ -121,9 +121,45 @@
     <script src="./app.js"></script>
 
     <!-- Maps -->
-    <script type="text/javascript" src="./map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZQJjiBuo7YXPpP38_ELv5bva4Bhgldqg&callback=initMap" async
-        defer></script>
+    <script>
+        let map;
+        let infowindow;
+
+        function initMap() {
+            let washDc = {
+                lat: 38.9072,
+                lng: -77.0369
+            };
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: washDc,
+                zoom: 15
+            });
+        }
+
+        function callback(results, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (let i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+
+        function createMarker(place) {
+            let placeLoc = place.geometry.location;
+            let marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZQJjiBuo7YXPpP38_ELv5bva4Bhgldqg&callback=initMap">
+    </script>
 </body>
 
 </html>
