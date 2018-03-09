@@ -1,22 +1,24 @@
 
 
 var map;
-var service;
+// var service;
 var infoWindow;
 
 
 function initMap() {
+  var washDc = { lat: 38.9072, lng: -77.0369 };
   map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 38.9072, lng: -77.0369 },
+    center: washDc,
     zoom: 13,
   });
   var request = {
     location: "WashDc",
     radius: '500',
-    query: 'parks'
+    type: ['store']
   };
 }
-  service = new google.maps.places.PlacesService(map);
+  // infoWindow = new google.maps.InfoWindow();
+  var service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
 
 
