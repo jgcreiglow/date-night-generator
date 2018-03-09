@@ -140,8 +140,12 @@ const yelpSearch = (data) => {
               </div>
             </div>
             <div class="row">
-              <div class ="col-md-8">
-                <p>${data[i].location.display_address}</p>
+              <div class ="col-md-10">
+              <p>
+                ${data[i].location.address1}
+                <br>
+                ${data[i].location.city}, ${data[i].location.state} ${data[i].location.zip_code}
+              </p>
               </div>
             </div>
           </div>`);
@@ -181,8 +185,12 @@ const yelpSearchTwo = (data) => {
               </div>
             </div>
             <div class="row">
-              <div class ="col-md-8">
-                <p>${data[i].location.display_address}</p>
+              <div class ="col-md-10">
+                <p>
+                  ${data[i].location.address1}
+                  <br>
+                  ${data[i].location.city}, ${data[i].location.state} ${data[i].location.zip_code}
+                </p>
               </div>
             </div>
           </div>`);
