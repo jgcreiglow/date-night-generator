@@ -86,7 +86,7 @@ const zipcodeSetter = () => {
         dataType: 'json',
         data: yelpSearchParams,
     }).done((data) => {
-        window.location.href = './movies'
+        window.location.href = './dateResults'
     });
 }
 

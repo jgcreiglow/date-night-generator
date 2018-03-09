@@ -12,7 +12,7 @@ module.exports = (app) => {
     });
 
     // movie selection phase
-    app.get("/movies", (req, res) => {
+    app.get("/dateResults", (req, res) => {
         res.sendFile(path.join(__dirname, "../movies.html"))
     });
 
