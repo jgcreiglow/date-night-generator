@@ -22,12 +22,11 @@
 }
 
 /* breadcrumb formatting */
+
 .breadcrumb {
     background-color: rgb(60, 62, 66);
     color: rgb(134, 124, 76);
 }
-
-
 
 /* document formatting */
 
@@ -41,12 +40,12 @@ a {
     color: lightgrey;
 }
 
-.data{
-  color: lightgrey;
-  overflow: scroll;
+.data {
+    color: lightgrey;
+    overflow: scroll;
     height: 300px;
-
 }
+
 /* title formatting */
 
 .title {
@@ -129,9 +128,6 @@ hr {
     margin: 10px;
 }
 
-
-
-
 @font-face {
     font-family: Biko;
     src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/biko-black.woff");
@@ -196,4 +192,8 @@ mask {
     border: 5px solid rgb(0, 255, 191);
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+#restart {
+    display: none;
 }

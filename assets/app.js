@@ -125,9 +125,9 @@ const yelpSearch = (data) => {
         data: data,
     }).done((data) => {
         console.log(data);
-        for (var i = 0; i< data.length; i++){
+        for (let i = 0; i < data.length; i++) {
 
-          var restaurantResults = $(`
+            let restaurantResults = $(`
             <div class ="row">
               <div class="col-md-7">
                 <h4>${data[i].name}</h4>
@@ -150,11 +150,11 @@ const yelpSearch = (data) => {
             </div>
           </div>`);
 
-        $("#restaurantRes").append(restaurantResults);
-          };
+            $("#restaurantRes").append(restaurantResults);
+        };
         return data;
 
-      });
+    });
 
 }
 
@@ -170,9 +170,9 @@ const yelpSearchTwo = (data) => {
     }).done((data) => {
         console.log(data);
         $(".contentRes").show();
-        for (var i = 0; i< data.length; i++){
+        for (let i = 0; i < data.length; i++) {
 
-          var funResults = $(`
+            let funResults = $(`
             <div class ="row">
               <div class="col-md-7">
                 <h4>${data[i].name}</h4>
@@ -195,8 +195,8 @@ const yelpSearchTwo = (data) => {
             </div>
           </div>`);
 
-        $("#funData").append(funResults);
-          };
+            $("#funData").append(funResults);
+        };
         return data;
 
 
@@ -221,4 +221,17 @@ $('#btnMovies').on("click", (event) => {
         yelpSearch(data);
         yelpSearchTwo(data);
     })
+    $('#btnMovies').hide();
+    $('#restart').show();
+    let resetButton = $(`
+    <div class ="row justify-content-md-center animated fadeIn">
+    <a href="./index.html">
+    <button class="btn-lg hvr-grow-shadow">
+        <i class="fa fa-redo justify-content-center">
+        </i>
+        <br> Restart
+    </button>
+</a>
+  </div>`);
+    $("#restart").append(resetButton);
 });
