@@ -125,9 +125,33 @@ const yelpSearch = (data) => {
         data: data,
     }).done((data) => {
         console.log(data);
-        $("#restaurantData").html = "<p>" + data[0].name + "</p>";
+        for (var i = 0; i< data.length; i++){
+
+          var restaurantResults = $(`
+            <div class ="row">
+              <div class="col-md-7">
+                <h4>${data[i].name}</h4>
+              </div>
+              <div class="col-md-1 justify-content-md-center">
+                <a href= ${data[i].url} target="blank"><i class= "fab fa-yelp"></i></a>
+              </div>
+              <div class="col-md-1 justify-content-md-center">
+                <h4> ${data[i].price}</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class ="col-md-8">
+                <p>${data[i].location.display_address}</p>
+              </div>
+            </div>
+          </div>`);
+
+        $("#restaurantRes").append(restaurantResults);
+          };
         return data;
-    });
+
+      });
+
 }
 
 // Fun stuff result function
@@ -141,7 +165,33 @@ const yelpSearchTwo = (data) => {
         data: data,
     }).done((data) => {
         console.log(data);
+        $(".contentRes").show();
+        for (var i = 0; i< data.length; i++){
+
+          var funResults = $(`
+            <div class ="row">
+              <div class="col-md-7">
+                <h4>${data[i].name}</h4>
+              </div>
+              <div class="col-md-1 justify-content-md-center">
+                <a href= ${data[i].url} target="blank"><i class= "fab fa-yelp"></i></a>
+              </div>
+              <div class="col-md-1 justify-content-md-center">
+                <h4> ${data[i].price}</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class ="col-md-8">
+                <p>${data[i].location.display_address}</p>
+              </div>
+            </div>
+          </div>`);
+
+        $("#funData").append(funResults);
+          };
         return data;
+
+
     });
 }
 
